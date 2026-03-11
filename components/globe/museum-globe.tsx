@@ -92,8 +92,8 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
     const el = document.createElement('div');
     el.className = 'museum-marker';
     el.style.cssText = `
-      width: 10px;
-      height: 10px;
+      width: 16px;
+      height: 16px;
       background: #00FF00;
       border-radius: 50%;
       border: 2px solid #FFFFFF;
@@ -103,8 +103,14 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
         0 0 20px #00FF0080,
         inset 0 0 3px rgba(255,255,255,0.9);
       cursor: pointer;
+      pointer-events: auto;
       animation: techPulse 1s ease-in-out infinite;
     `;
+    
+    // Add click handler
+    el.addEventListener('click', () => {
+      console.log('Marker clicked:', museum.name);
+    });
     
     return el;
   }, []);
@@ -139,6 +145,11 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
               0 0 35px #00FF00;
           }
         }
+        .museum-marker {
+          pointer-events: auto !important;
+          cursor: pointer !important;
+          z-index: 1000 !important;
+        }
         .museum-marker:hover {
           transform: scale(1.5) !important;
           z-index: 100;
@@ -161,9 +172,14 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
           pointLat="lat"
           pointLng="lng"
           pointAltitude={0.01}
+          pointRadius={0.5}
           pointEl={markerElement}
           pointsMerge={false}
-          onPointClick={(point: any) => onMuseumClick(point as Museum)}
+          enablePointerEvent={true}
+          onPointClick={(point: any) => {
+            console.log('Clicked point:', point);
+            onMuseumClick(point as Museum);
+          }}
           onPointHover={(point: any) => onMuseumHover(point as Museum | null)}
           
           onGlobeReady={() => setGlobeReady(true)}
