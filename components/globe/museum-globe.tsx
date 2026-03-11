@@ -90,27 +90,21 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
   // Marker HTML element - tech style with glow
   const markerElement = useCallback((museum: Museum) => {
     const size = getMarkerSize(museum);
-    const color = museumTypeColors[museum.type];
     const el = document.createElement('div');
     el.className = 'museum-marker';
     el.style.cssText = `
-      width: ${size * 16}px;
-      height: ${size * 16}px;
-      background: ${color};
-      color: ${color};
+      width: 12px;
+      height: 12px;
+      background: #00FFFF;
       border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.9);
+      border: 2px solid #FFFFFF;
       box-shadow: 
-        0 0 ${size * 10}px ${color}90,
-        0 0 ${size * 20}px ${color}60,
-        0 0 ${size * 30}px ${color}30,
-        inset 0 0 ${size * 6}px rgba(255,255,255,0.5);
+        0 0 8px #00FFFF,
+        0 0 16px #00FFFF,
+        0 0 24px #00FFFF80,
+        inset 0 0 4px rgba(255,255,255,0.8);
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: techPulse 2s ease-in-out infinite;
+      animation: techPulse 1.5s ease-in-out infinite;
     `;
     
     return el;
@@ -131,19 +125,19 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
         @keyframes techPulse {
           0%, 100% { 
             transform: scale(1);
+            opacity: 1;
             box-shadow: 
-              0 0 8px currentColor,
-              0 0 16px currentColor,
-              0 0 24px currentColor,
-              inset 0 0 4px rgba(255,255,255,0.5);
+              0 0 8px #00FFFF,
+              0 0 16px #00FFFF,
+              0 0 24px #00FFFF80;
           }
           50% { 
-            transform: scale(1.15);
+            transform: scale(1.5);
+            opacity: 0.7;
             box-shadow: 
-              0 0 12px currentColor,
-              0 0 24px currentColor,
-              0 0 36px currentColor,
-              inset 0 0 6px rgba(255,255,255,0.7);
+              0 0 12px #00FFFF,
+              0 0 24px #00FFFF,
+              0 0 40px #00FFFF;
           }
         }
         .museum-marker:hover {
@@ -163,13 +157,12 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
           showGraticules={true}
           showAtmosphere={false}
           
-          // Points (museums)
+          // Points (museums) - custom HTML markers with tech style
           pointsData={pointsData}
           pointLat="lat"
           pointLng="lng"
-          pointColor="color"
           pointAltitude={0.01}
-          pointRadius="size"
+          pointEl={markerElement}
           pointsMerge={false}
           onPointClick={(point: any) => onMuseumClick(point as Museum)}
           onPointHover={(point: any) => onMuseumHover(point as Museum | null)}
