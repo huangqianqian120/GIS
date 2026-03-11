@@ -129,7 +129,7 @@ export function MuseumDetailCard({ museum, onClose }: MuseumDetailCardProps) {
               {museum.highlights.map((highlight, index) => (
                 <span 
                   key={index}
-                  className="px-2 py-1 text-xs bg-secondary rounded-md"
+                  className="px-2 py-1 text-xs text-[#00FF00] border border-[#00FF00]/30 rounded"
                 >
                   {highlight}
                 </span>

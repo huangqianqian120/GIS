@@ -93,7 +93,7 @@ export default function MuseumGlobePage() {
       <header className="absolute top-0 left-0 right-0 z-10 p-4 md:p-6">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           {/* Title */}
-          <div className="bg-[#00FF00]/90 backdrop-blur-sm px-4 py-2 rounded-lg">
+          <div className="bg-[#00FF00] px-4 py-2">
             <h1 className="text-lg md:text-xl font-bold text-black leading-tight">
               Museum Globe
             </h1>

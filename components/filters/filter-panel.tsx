@@ -216,10 +216,9 @@ function FilterChip({
       className={cn(
         "px-2.5 py-1 text-xs rounded-full transition-all duration-200",
         isActive 
-          ? "bg-primary text-primary-foreground shadow-sm" 
+          ? "bg-[#00FF00] text-black font-medium" 
           : "bg-muted text-muted-foreground hover:bg-muted/80"
       )}
-      style={isActive && color ? { backgroundColor: color, color: 'white' } : undefined}
     >
       {label}
     </button>
