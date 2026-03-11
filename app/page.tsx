@@ -120,9 +120,9 @@ export default function MuseumGlobePage() {
             {/* Language Toggle */}
             <button
               onClick={() => setLanguage(language === 'en' ? 'zh' : 'en')}
-              className="px-3 py-2 text-sm font-medium border border-[#00FF00] text-[#00FF00] hover:bg-[#00FF00]/10 rounded transition-colors whitespace-nowrap"
+              className="px-2 py-2 text-sm font-medium text-[#00FF00] hover:text-[#00FF00]/70 transition-colors"
             >
-              {language === 'en' ? '中文' : 'EN'}
+              {language === 'en' ? '中/英' : 'EN/中'}
             </button>
           </div>
         </div>
