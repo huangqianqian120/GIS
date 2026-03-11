@@ -31,7 +31,7 @@ export function ViewControls({
   return (
     <div className="flex flex-col gap-2">
       {/* View Presets */}
-      <div className="bg-card/95 backdrop-blur-md border border-border rounded-xl p-1.5 shadow-xl">
+      <div className="bg-black/80 border border-[#00FF00]/30 rounded-none p-1.5 shadow-xl">
         <div className="flex flex-col gap-1">
           {viewButtons.map(({ id, label, icon }) => (
             <button
@@ -40,8 +40,8 @@ export function ViewControls({
               className={cn(
                 "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200",
                 currentView === id
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  ? "bg-[#00FF00] text-black font-medium"
+                  : "text-white hover:bg-white/10"
               )}
             >
               {icon && <Globe className="w-4 h-4" />}
@@ -52,7 +52,7 @@ export function ViewControls({
       </div>
 
       {/* Action Buttons */}
-      <div className="bg-card/95 backdrop-blur-md border border-border rounded-xl p-1.5 shadow-xl">
+      <div className="bg-black/80 border border-[#00FF00]/30 rounded-none p-1.5 shadow-xl">
         <div className="flex flex-col gap-1">
           <ControlButton
             icon={RotateCcw}
@@ -87,7 +87,7 @@ function ControlButton({
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+      className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-[#00FF00] hover:bg-[#00FF00]/10 transition-colors"
       title={label}
     >
       <Icon className="w-4 h-4" />
