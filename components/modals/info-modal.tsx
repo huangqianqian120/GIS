@@ -13,64 +13,64 @@ export function InfoModal({ onClose }: InfoModalProps) {
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-md bg-card border border-border rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300"
+        className="relative w-full max-w-md bg-black/90 border border-[#00FF00]/30 rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full hover:bg-muted transition-colors"
+          className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/10 transition-colors"
         >
-          <X className="w-4 h-4" />
+          <X className="w-4 h-4 text-[#00FF00]" />
         </button>
         
         <div className="p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
-              <Globe className="w-6 h-6 text-primary-foreground" />
+            <div className="w-12 h-12 rounded-xl bg-[#00FF00] flex items-center justify-center">
+              <Globe className="w-6 h-6 text-black" />
             </div>
             <div>
-              <h2 className="text-xl font-bold">如果地球是一座博物馆</h2>
-              <p className="text-sm text-muted-foreground">If Earth Were a Museum</p>
+              <h2 className="text-xl font-bold text-white">Museum Globe</h2>
+              <p className="text-sm text-white/60">Explore World's Museums</p>
             </div>
           </div>
           
-          <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-            这是一个沉浸式全球博物馆可视化平台，将全球知名博物馆以3D形式附着在地球对应经纬度位置上。
-            您可以通过拖拽、缩放、旋转来探索这个文化星球，发现世界各地的艺术瑰宝与历史遗产。
+          <p className="text-sm text-white/80 leading-relaxed mb-6">
+            An immersive 3D visualization platform showcasing global museums on an interactive Earth globe. 
+            Explore cultural treasures and historical heritage from around the world through drag, zoom, and rotate interactions.
           </p>
           
           <div className="space-y-3 mb-6">
-            <h3 className="text-sm font-semibold">功能特点</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <h3 className="text-sm font-semibold text-[#00FF00]">Features</h3>
+            <ul className="space-y-2 text-sm text-white/70">
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                <span>3D地球场景支持拖拽、缩放、旋转交互</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00FF00] mt-2 shrink-0" />
+                <span>Interactive 3D globe with drag, zoom, and rotate</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                <span>按大洲、国家、类型、年代等维度筛选展示</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00FF00] mt-2 shrink-0" />
+                <span>Filter by continent, country, type, and era</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                <span>点击博物馆查看详细信息和馆藏亮点</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00FF00] mt-2 shrink-0" />
+                <span>Click museums for detailed info and highlights</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                <span>支持搜索、视角预设、分享等辅助功能</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00FF00] mt-2 shrink-0" />
+                <span>Search, view presets, and sharing features</span>
               </li>
             </ul>
           </div>
           
           <div className="space-y-3 mb-6">
-            <h3 className="text-sm font-semibold">数据来源</h3>
-            <p className="text-sm text-muted-foreground">
-              博物馆数据综合自Wikidata等公开数据源，包含全球50+座著名博物馆的基本信息、开放时间、馆藏亮点等。
+            <h3 className="text-sm font-semibold text-[#00FF00]">Data Source</h3>
+            <p className="text-sm text-white/70">
+              Museum data sourced from public databases including 110+ famous museums worldwide with basic info, opening hours, and highlights.
             </p>
           </div>
           
-          <div className="pt-4 border-t border-border">
-            <p className="text-xs text-muted-foreground text-center flex items-center justify-center gap-1">
-              Made with <Heart className="w-3 h-3 text-destructive" /> for culture lovers
+          <div className="pt-4 border-t border-[#00FF00]/30">
+            <p className="text-xs text-white/50 text-center flex items-center justify-center gap-1">
+              Made with <Heart className="w-3 h-3 text-[#00FF00]" /> for culture lovers
             </p>
           </div>
         </div>
