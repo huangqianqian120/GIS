@@ -9,21 +9,26 @@ import { ViewControls } from '@/components/controls/view-controls';
 import { InfoModal } from '@/components/modals/info-modal';
 import { ShareModal } from '@/components/modals/share-modal';
 import { museums as allMuseums, type Museum } from '@/lib/museums-data';
+import { translations, type Language } from '@/lib/i18n';
 
 export default function MuseumGlobePage() {
   // Client-side mounting state to prevent hydration mismatch
   const [isMounted, setIsMounted] = useState(false);
+  const [language, setLanguage] = useState<Language>('zh');
   
   useEffect(() => {
     setIsMounted(true);
   }, []);
+  
+  const t = translations[language];
+  
   // State
   const [viewPreset, setViewPreset] = useState<ViewPreset>('default');
   const [selectedMuseum, setSelectedMuseum] = useState<Museum | null>(null);
   const [hoveredMuseum, setHoveredMuseum] = useState<Museum | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showInfoModal, setShowInfoModal] = useState(false);
-  const [showShareModal, setShowShareModal] = useState(false);
+   const [showShareModal, setShowShareModal] = useState(false);
 
   // All museums (no filtering)
   const museums = allMuseums;
@@ -67,8 +72,8 @@ export default function MuseumGlobePage() {
     return (
       <main className="relative w-screen h-screen overflow-hidden bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-lg font-bold text-[#00FF00]">Museum Globe</h1>
-          <p className="text-xs text-[#00FF00]/70 animate-pulse">Loading...</p>
+          <h1 className="text-lg font-bold text-[#00FF00]">{t.title}</h1>
+          <p className="text-xs text-[#00FF00]/70 animate-pulse">{t.loading}</p>
         </div>
       </main>
     );
@@ -95,19 +100,30 @@ export default function MuseumGlobePage() {
           {/* Title */}
           <div className="bg-[#00FF00] px-4 py-2">
             <h1 className="text-lg md:text-xl font-bold text-black leading-tight">
-              Museum Globe
+              {t.title}
             </h1>
             <p className="text-xs text-black/70">
-              Explore World's Museums
+              {t.subtitle}
             </p>
           </div>
 
-          {/* Search Bar */}
-          <div className="w-full md:w-auto">
-            <SearchBar 
-              museums={allMuseums}
-              onSelect={handleSearchSelect}
-            />
+          <div className="flex items-center gap-3">
+            {/* Language Toggle */}
+            <button
+              onClick={() => setLanguage(language === 'en' ? 'zh' : 'en')}
+              className="px-3 py-1.5 text-sm font-medium border border-[#00FF00] text-[#00FF00] hover:bg-[#00FF00]/10 rounded transition-colors"
+            >
+              {language === 'en' ? '中文' : 'EN'}
+            </button>
+
+            {/* Search Bar */}
+            <div className="w-full md:w-auto">
+              <SearchBar 
+                museums={allMuseums}
+                onSelect={handleSearchSelect}
+                placeholder={t.searchPlaceholder}
+              />
+            </div>
           </div>
         </div>
       </header>
@@ -120,6 +136,7 @@ export default function MuseumGlobePage() {
           onReset={handleReset}
           onShare={() => setShowShareModal(true)}
           onInfo={() => setShowInfoModal(true)}
+          t={t}
         />
       </aside>
 

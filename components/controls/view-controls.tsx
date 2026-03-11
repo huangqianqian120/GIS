@@ -10,15 +10,26 @@ interface ViewControlsProps {
   onReset: () => void;
   onShare: () => void;
   onInfo: () => void;
+  t?: {
+    global: string;
+    resetView: string;
+    share: string;
+    about: string;
+    asia: string;
+    europe: string;
+    americas: string;
+    africa: string;
+    oceania: string;
+  };
 }
 
-const viewButtons: { id: ViewPreset; label: string; icon?: boolean }[] = [
-  { id: 'default', label: '全球', icon: true },
-  { id: 'europe', label: '欧洲' },
-  { id: 'asia', label: '亚洲' },
-  { id: 'americas', label: '美洲' },
-  { id: 'africa', label: '非洲' },
-  { id: 'oceania', label: '大洋洲' },
+const viewButtons: { id: ViewPreset; labelKey: keyof ViewControlsProps['t'] }[] = [
+  { id: 'default', labelKey: 'global' },
+  { id: 'europe', labelKey: 'europe' },
+  { id: 'asia', labelKey: 'asia' },
+  { id: 'americas', labelKey: 'americas' },
+  { id: 'africa', labelKey: 'africa' },
+  { id: 'oceania', labelKey: 'oceania' },
 ];
 
 export function ViewControls({ 
@@ -27,13 +38,26 @@ export function ViewControls({
   onReset, 
   onShare,
   onInfo,
+  t,
 }: ViewControlsProps) {
+  const labels = t || {
+    global: '全球',
+    resetView: '重置视角',
+    share: '分享',
+    about: '关于',
+    asia: '亚洲',
+    europe: '欧洲',
+    americas: '美洲',
+    africa: '非洲',
+    oceania: '大洋洲',
+  };
+
   return (
     <div className="flex flex-col gap-2">
       {/* View Presets */}
       <div className="bg-black/80 border border-[#00FF00]/30 rounded-none p-1.5 shadow-xl">
         <div className="flex flex-col gap-1">
-          {viewButtons.map(({ id, label, icon }) => (
+          {viewButtons.map(({ id, labelKey }) => (
             <button
               key={id}
               onClick={() => onViewChange(id)}
@@ -44,8 +68,8 @@ export function ViewControls({
                   : "text-white hover:text-[#00FF00]"
               )}
             >
-              {icon && <Globe className="w-4 h-4" />}
-              {label}
+              {id === 'default' && <Globe className="w-4 h-4" />}
+              {labels[labelKey]}
             </button>
           ))}
         </div>
@@ -56,17 +80,17 @@ export function ViewControls({
         <div className="flex flex-col gap-1">
           <ControlButton
             icon={RotateCcw}
-            label="重置视角"
+            label={labels.resetView}
             onClick={onReset}
           />
           <ControlButton
             icon={Share2}
-            label="分享"
+            label={labels.share}
             onClick={onShare}
           />
           <ControlButton
             icon={Info}
-            label="关于"
+            label={labels.about}
             onClick={onInfo}
           />
         </div>

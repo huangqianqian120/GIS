@@ -9,9 +9,10 @@ import { cn } from '@/lib/utils';
 interface SearchBarProps {
   museums: Museum[];
   onSelect: (museum: Museum) => void;
+  placeholder?: string;
 }
 
-export function SearchBar({ museums, onSelect }: SearchBarProps) {
+export function SearchBar({ museums, onSelect, placeholder = 'Search museums, cities or countries...' }: SearchBarProps) {
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [results, setResults] = useState<Museum[]>([]);
@@ -61,7 +62,7 @@ export function SearchBar({ museums, onSelect }: SearchBarProps) {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="搜索博物馆、城市或国家..."
+          placeholder={placeholder}
           className={cn(
             "w-full pl-10 pr-10 py-2.5 bg-card/95 backdrop-blur-md border border-border rounded-xl",
             "text-sm placeholder:text-muted-foreground",
