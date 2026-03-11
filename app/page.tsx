@@ -66,9 +66,9 @@ export default function MuseumGlobePage() {
   if (!isMounted) {
     return (
       <main className="relative w-screen h-screen overflow-hidden bg-background flex items-center justify-center">
-        <div className="text-center bg-[#00FF00]/90 backdrop-blur-sm px-6 py-4 rounded-lg">
-          <h1 className="text-lg font-bold text-black">Museum Globe</h1>
-          <p className="text-xs text-black/70 animate-pulse">Loading...</p>
+        <div className="text-center">
+          <h1 className="text-lg font-bold text-[#00FF00]">Museum Globe</h1>
+          <p className="text-xs text-[#00FF00]/70 animate-pulse">Loading...</p>
         </div>
       </main>
     );
