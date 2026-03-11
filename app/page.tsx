@@ -10,6 +10,7 @@ import { InfoModal } from '@/components/modals/info-modal';
 import { ShareModal } from '@/components/modals/share-modal';
 import { museums as allMuseums, type Museum } from '@/lib/museums-data';
 import { translations, type Language } from '@/lib/i18n';
+import { BGMPlayer } from '@/components/bgm-player';
 
 export default function MuseumGlobePage() {
   // Client-side mounting state to prevent hydration mismatch
@@ -191,6 +192,9 @@ export default function MuseumGlobePage() {
       {/* Gradient Overlays for depth */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background/80 to-transparent pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background/60 to-transparent pointer-events-none" />
+
+      {/* BGM Player - add your audio file to /public folder and update the src */}
+      <BGMPlayer src="/cornfield-chase.mp3" />
     </main>
   );
 }
