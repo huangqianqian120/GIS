@@ -67,8 +67,8 @@ export default function MuseumGlobePage() {
     return (
       <main className="relative w-screen h-screen overflow-hidden bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-lg font-bold text-foreground">{"如果地球是一座博物馆"}</h1>
-          <p className="text-xs text-muted-foreground animate-pulse">{"Loading..."}</p>
+          <h1 className="text-lg font-bold text-foreground">Museum Globe</h1>
+          <p className="text-xs text-muted-foreground animate-pulse">Loading...</p>
         </div>
       </main>
     );
@@ -95,10 +95,10 @@ export default function MuseumGlobePage() {
           {/* Title */}
           <div>
             <h1 className="text-lg md:text-xl font-bold text-foreground leading-tight">
-              如果地球是一座博物馆
+              Museum Globe
             </h1>
             <p className="text-xs text-muted-foreground">
-              If Earth Were a Museum
+              Explore World's Museums
             </p>
           </div>
 

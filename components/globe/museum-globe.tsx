@@ -180,14 +180,14 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
           ringPropagationSpeed="propagationSpeed"
           ringRepeatPeriod="repeatPeriod"
           
-          // Labels
-          labelsData={museums.filter(m => m.popularity >= 80)}
+          // Labels - only show for top museums to avoid clutter
+          labelsData={museums.filter(m => m.popularity >= 95)}
           labelLat="lat"
           labelLng="lng"
-          labelText={(d: any) => d.nameLocal || d.name}
-          labelSize={0.6}
-          labelDotRadius={0.4}
-          labelColor={() => 'rgba(255, 255, 255, 0.85)'}
+          labelText={(d: any) => d.name}
+          labelSize={0.8}
+          labelDotRadius={0.5}
+          labelColor={() => 'rgba(255, 255, 255, 0.9)'}
           labelResolution={2}
           labelAltitude={0.02}
           

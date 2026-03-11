@@ -39,16 +39,16 @@ export type Continent =
   | 'Oceania';
 
 export const museumTypeColors: Record<MuseumType, string> = {
-  'art': '#60A5FA',
-  'history': '#93C5FD',
-  'science': '#38BDF8',
-  'natural-history': '#34D399',
-  'archaeology': '#A78BFA',
-  'technology': '#22D3EE',
-  'cultural': '#E879F9',
-  'military': '#94A3B8',
-  'maritime': '#7DD3FC',
-  'specialized': '#C4B5FD',
+  'art': '#E8E8E8',
+  'history': '#C0C0C0',
+  'science': '#A8D8FF',
+  'natural-history': '#98FB98',
+  'archaeology': '#DDA0DD',
+  'technology': '#00FFFF',
+  'cultural': '#FFB6C1',
+  'military': '#808080',
+  'maritime': '#87CEEB',
+  'specialized': '#D8BFD8',
 };
 
 export const museumTypeLabels: Record<MuseumType, string> = {
