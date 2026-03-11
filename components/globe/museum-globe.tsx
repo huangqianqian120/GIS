@@ -89,26 +89,25 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
 
   // Marker HTML element - tech style with glow
   const markerElement = useCallback((museum: Museum) => {
-    const size = getMarkerSize(museum);
     const el = document.createElement('div');
     el.className = 'museum-marker';
     el.style.cssText = `
-      width: 12px;
-      height: 12px;
-      background: #00FFFF;
+      width: 10px;
+      height: 10px;
+      background: #E8E8E8;
       border-radius: 50%;
       border: 2px solid #FFFFFF;
       box-shadow: 
-        0 0 8px #00FFFF,
-        0 0 16px #00FFFF,
-        0 0 24px #00FFFF80,
-        inset 0 0 4px rgba(255,255,255,0.8);
+        0 0 6px #E8E8E8,
+        0 0 12px #E8E8E8,
+        0 0 20px #C0C0C0,
+        inset 0 0 3px rgba(255,255,255,0.9);
       cursor: pointer;
-      animation: techPulse 1.5s ease-in-out infinite;
+      animation: techPulse 1s ease-in-out infinite;
     `;
     
     return el;
-  }, [getMarkerSize]);
+  }, []);
 
   // Points data for globe
   const pointsData = useMemo(() => {
@@ -127,17 +126,17 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
             transform: scale(1);
             opacity: 1;
             box-shadow: 
-              0 0 8px #00FFFF,
-              0 0 16px #00FFFF,
-              0 0 24px #00FFFF80;
+              0 0 6px #E8E8E8,
+              0 0 12px #E8E8E8,
+              0 0 20px #C0C0C0;
           }
           50% { 
-            transform: scale(1.5);
-            opacity: 0.7;
+            transform: scale(2);
+            opacity: 0.5;
             box-shadow: 
-              0 0 12px #00FFFF,
-              0 0 24px #00FFFF,
-              0 0 40px #00FFFF;
+              0 0 10px #FFFFFF,
+              0 0 20px #E8E8E8,
+              0 0 35px #C0C0C0;
           }
         }
         .museum-marker:hover {
