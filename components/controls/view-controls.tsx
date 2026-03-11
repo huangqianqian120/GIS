@@ -39,13 +39,9 @@ export function ViewControls({
               onClick={() => onViewChange(id)}
               className={cn(
                 "flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200",
-                id === 'default'
-                ? currentView === id
-                  ? "text-[#00FF00] border border-[#00FF00]/50"
+                currentView === id
+                  ? "text-[#00FF00]"
                   : "text-white hover:text-[#00FF00]"
-                : currentView === id
-                  ? "bg-[#00FF00] text-black font-medium"
-                  : "text-white hover:bg-white/10"
               )}
             >
               {icon && <Globe className="w-4 h-4" />}
