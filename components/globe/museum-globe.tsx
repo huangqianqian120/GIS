@@ -87,30 +87,31 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
     return baseSize + popularityBonus;
   }, []);
 
-  // Marker HTML element
+  // Marker HTML element - tech style with glow
   const markerElement = useCallback((museum: Museum) => {
     const size = getMarkerSize(museum);
     const color = museumTypeColors[museum.type];
     const el = document.createElement('div');
     el.className = 'museum-marker';
     el.style.cssText = `
-      width: ${size * 20}px;
-      height: ${size * 20}px;
+      width: ${size * 16}px;
+      height: ${size * 16}px;
       background: ${color};
+      color: ${color};
       border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.8);
-      box-shadow: 0 0 ${size * 15}px ${color}80, 0 0 ${size * 30}px ${color}40;
+      border: 2px solid rgba(255,255,255,0.9);
+      box-shadow: 
+        0 0 ${size * 10}px ${color}90,
+        0 0 ${size * 20}px ${color}60,
+        0 0 ${size * 30}px ${color}30,
+        inset 0 0 ${size * 6}px rgba(255,255,255,0.5);
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
+      animation: techPulse 2s ease-in-out infinite;
     `;
-    
-    // Add pulse animation for popular museums
-    if (museum.popularity >= 90) {
-      el.style.animation = 'pulse 2s infinite';
-    }
     
     return el;
   }, [getMarkerSize]);
@@ -124,26 +125,26 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
     }));
   }, [museums, getMarkerSize]);
 
-  // Rings data for effect
-  const ringsData = useMemo(() => {
-    return museums
-      .filter(m => m.popularity >= 85)
-      .map(museum => ({
-        lat: museum.lat,
-        lng: museum.lng,
-        maxR: 3,
-        propagationSpeed: 2,
-        repeatPeriod: 1500,
-        color: museumTypeColors[museum.type],
-      }));
-  }, [museums]);
-
   return (
     <div ref={containerRef} className="w-full h-full relative">
       <style jsx global>{`
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.2); }
+        @keyframes techPulse {
+          0%, 100% { 
+            transform: scale(1);
+            box-shadow: 
+              0 0 8px currentColor,
+              0 0 16px currentColor,
+              0 0 24px currentColor,
+              inset 0 0 4px rgba(255,255,255,0.5);
+          }
+          50% { 
+            transform: scale(1.15);
+            box-shadow: 
+              0 0 12px currentColor,
+              0 0 24px currentColor,
+              0 0 36px currentColor,
+              inset 0 0 6px rgba(255,255,255,0.7);
+          }
         }
         .museum-marker:hover {
           transform: scale(1.5) !important;
@@ -172,13 +173,6 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
           pointsMerge={false}
           onPointClick={(point: any) => onMuseumClick(point as Museum)}
           onPointHover={(point: any) => onMuseumHover(point as Museum | null)}
-          
-          // Rings effect
-          ringsData={ringsData}
-          ringColor="color"
-          ringMaxRadius="maxR"
-          ringPropagationSpeed="propagationSpeed"
-          ringRepeatPeriod="repeatPeriod"
           
           onGlobeReady={() => setGlobeReady(true)}
           animateIn={true}
