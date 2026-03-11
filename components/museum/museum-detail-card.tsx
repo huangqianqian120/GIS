@@ -16,44 +16,44 @@ export function MuseumDetailCard({ museum, onClose }: MuseumDetailCardProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
       <div 
-        className="relative w-full max-w-lg bg-card border border-border rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300"
+        className="relative w-full max-w-lg bg-black/90 border border-[#00FF00]/30 rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header with gradient */}
         <div 
           className="relative h-32 flex items-end p-6"
           style={{ 
-            background: `linear-gradient(135deg, ${typeColor}40 0%, ${typeColor}10 100%)`,
+            background: `linear-gradient(135deg, #00FF0040 0%, #00FF0010 100%)`,
           }}
         >
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-background/80 hover:bg-background transition-colors"
+            className="absolute top-4 right-4 p-2 rounded-full bg-black/50 hover:bg-black/80 transition-colors"
           >
-            <X className="w-4 h-4" />
+            <X className="w-4 h-4 text-[#00FF00]" />
           </button>
           
           <div className="flex items-center gap-3">
             <div 
               className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shadow-lg"
-              style={{ backgroundColor: typeColor }}
+              style={{ backgroundColor: '#00FF00' }}
             >
-              <span className="text-white font-bold">
+              <span className="text-black font-bold">
                 {museum.name.charAt(0)}
               </span>
             </div>
             <div>
               <span 
                 className="inline-block px-2 py-0.5 text-xs font-medium rounded-full mb-1"
-                style={{ backgroundColor: `${typeColor}30`, color: typeColor }}
+                style={{ backgroundColor: '#00FF0030', color: '#00FF00' }}
               >
                 {museumTypeLabels[museum.type]}
               </span>
-              <h2 className="text-xl font-bold text-foreground leading-tight">
+              <h2 className="text-xl font-bold text-white leading-tight">
                 {museum.nameLocal || museum.name}
               </h2>
               {museum.nameLocal && (
-                <p className="text-sm text-muted-foreground">{museum.name}</p>
+                <p className="text-sm text-white/70">{museum.name}</p>
               )}
             </div>
           </div>
@@ -62,7 +62,7 @@ export function MuseumDetailCard({ museum, onClose }: MuseumDetailCardProps) {
         {/* Content */}
         <div className="p-6 space-y-5">
           {/* Description */}
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-sm text-white/80 leading-relaxed">
             {museum.description}
           </p>
           
@@ -101,21 +101,21 @@ export function MuseumDetailCard({ museum, onClose }: MuseumDetailCardProps) {
           </div>
           
           {/* Opening Hours */}
-          <div className="flex items-start gap-3 p-3 bg-muted/50 rounded-lg">
-            <Clock className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+          <div className="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+            <Clock className="w-4 h-4 text-[#00FF00] mt-0.5 shrink-0" />
             <div>
-              <p className="text-xs text-muted-foreground mb-1">开放时间</p>
-              <p className="text-sm">{museum.openingHours}</p>
+              <p className="text-xs text-white/60 mb-1">开放时间</p>
+              <p className="text-sm text-white">{museum.openingHours}</p>
             </div>
           </div>
           
           {/* Annual Visitors */}
           {museum.annualVisitors && (
-            <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
-              <Users className="w-4 h-4 text-muted-foreground shrink-0" />
+            <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
+              <Users className="w-4 h-4 text-[#00FF00] shrink-0" />
               <div>
-                <p className="text-xs text-muted-foreground">年访客量</p>
-                <p className="text-sm font-medium">
+                <p className="text-xs text-white/60">年访客量</p>
+                <p className="text-sm font-medium text-white">
                   {(museum.annualVisitors / 1000000).toFixed(1)}M 人次/年
                 </p>
               </div>
@@ -124,7 +124,7 @@ export function MuseumDetailCard({ museum, onClose }: MuseumDetailCardProps) {
           
           {/* Highlights */}
           <div>
-            <p className="text-xs text-muted-foreground mb-2">馆藏亮点</p>
+            <p className="text-xs text-white/60 mb-2">馆藏亮点</p>
             <div className="flex flex-wrap gap-1.5">
               {museum.highlights.map((highlight, index) => (
                 <span 
@@ -146,7 +146,7 @@ export function MuseumDetailCard({ museum, onClose }: MuseumDetailCardProps) {
                 rel="noopener noreferrer"
                 className={cn(
                   "flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm transition-colors",
-                  "bg-primary text-primary-foreground hover:bg-primary/90"
+                  "bg-[#00FF00] text-black hover:bg-[#00FF00]/90"
                 )}
               >
                 <ExternalLink className="w-4 h-4" />
@@ -158,7 +158,7 @@ export function MuseumDetailCard({ museum, onClose }: MuseumDetailCardProps) {
                 const url = `https://www.google.com/maps?q=${museum.lat},${museum.lng}`;
                 window.open(url, '_blank');
               }}
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm border border-border hover:bg-muted transition-colors"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm border border-[#00FF00] text-[#00FF00] hover:bg-[#00FF00]/10 transition-colors"
             >
               <MapPin className="w-4 h-4" />
               查看地图
@@ -181,10 +181,10 @@ function InfoItem({
 }) {
   return (
     <div className="flex items-start gap-2">
-      <Icon className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+      <Icon className="w-4 h-4 text-[#00FF00] mt-0.5 shrink-0" />
       <div className="min-w-0">
-        <p className="text-xs text-muted-foreground">{label}</p>
-        <div className="text-sm font-medium truncate">{value}</div>
+        <p className="text-xs text-white/60">{label}</p>
+        <div className="text-sm font-medium text-white truncate">{value}</div>
       </div>
     </div>
   );
