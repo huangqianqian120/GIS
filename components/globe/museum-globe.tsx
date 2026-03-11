@@ -64,7 +64,7 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
       const controls = globeRef.current.controls();
       if (controls) {
         controls.autoRotate = true;
-        controls.autoRotateSpeed = 0.3;
+        controls.autoRotateSpeed = 0.8;
         controls.enableZoom = true;
         controls.minDistance = 150;
         controls.maxDistance = 500;
