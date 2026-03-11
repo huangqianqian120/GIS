@@ -193,8 +193,8 @@ export default function MuseumGlobePage() {
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background/80 to-transparent pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background/60 to-transparent pointer-events-none" />
 
-      {/* BGM Player - using a free cosmic ambient music URL */}
-      <BGMPlayer src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
+      {/* BGM Player - cosmic piano music */}
+      <BGMPlayer src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" />
     </main>
   );
 }
