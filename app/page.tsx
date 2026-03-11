@@ -66,9 +66,9 @@ export default function MuseumGlobePage() {
   if (!isMounted) {
     return (
       <main className="relative w-screen h-screen overflow-hidden bg-background flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-lg font-bold text-foreground">Museum Globe</h1>
-          <p className="text-xs text-muted-foreground animate-pulse">Loading...</p>
+        <div className="text-center bg-[#00FF00]/90 backdrop-blur-sm px-6 py-4 rounded-lg">
+          <h1 className="text-lg font-bold text-black">Museum Globe</h1>
+          <p className="text-xs text-black/70 animate-pulse">Loading...</p>
         </div>
       </main>
     );
@@ -93,11 +93,11 @@ export default function MuseumGlobePage() {
       <header className="absolute top-0 left-0 right-0 z-10 p-4 md:p-6">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           {/* Title */}
-          <div>
-            <h1 className="text-lg md:text-xl font-bold text-foreground leading-tight">
+          <div className="bg-[#00FF00]/90 backdrop-blur-sm px-4 py-2 rounded-lg">
+            <h1 className="text-lg md:text-xl font-bold text-black leading-tight">
               Museum Globe
             </h1>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-black/70">
               Explore World's Museums
             </p>
           </div>
