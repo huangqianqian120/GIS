@@ -94,13 +94,13 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
     el.style.cssText = `
       width: 10px;
       height: 10px;
-      background: #E8E8E8;
+      background: #00FF00;
       border-radius: 50%;
       border: 2px solid #FFFFFF;
       box-shadow: 
-        0 0 6px #E8E8E8,
-        0 0 12px #E8E8E8,
-        0 0 20px #C0C0C0,
+        0 0 6px #00FF00,
+        0 0 12px #00FF00,
+        0 0 20px #00FF0080,
         inset 0 0 3px rgba(255,255,255,0.9);
       cursor: pointer;
       animation: techPulse 1s ease-in-out infinite;
@@ -126,17 +126,17 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
             transform: scale(1);
             opacity: 1;
             box-shadow: 
-              0 0 6px #E8E8E8,
-              0 0 12px #E8E8E8,
-              0 0 20px #C0C0C0;
+              0 0 6px #00FF00,
+              0 0 12px #00FF00,
+              0 0 20px #00FF0080;
           }
           50% { 
             transform: scale(2);
             opacity: 0.5;
             box-shadow: 
-              0 0 10px #FFFFFF,
-              0 0 20px #E8E8E8,
-              0 0 35px #C0C0C0;
+              0 0 10px #00FF00,
+              0 0 20px #00FF00,
+              0 0 35px #00FF00;
           }
         }
         .museum-marker:hover {
