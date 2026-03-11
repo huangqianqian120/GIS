@@ -41,6 +41,7 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
   const [globeReady, setGlobeReady] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isHovering, setIsHovering] = useState(false);
 
   // Handle resize
   useEffect(() => {
@@ -63,14 +64,14 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
     if (globeRef.current && globeReady) {
       const controls = globeRef.current.controls();
       if (controls) {
-        controls.autoRotate = true;
+        controls.autoRotate = !isHovering;
         controls.autoRotateSpeed = 0.8;
         controls.enableZoom = true;
         controls.minDistance = 150;
         controls.maxDistance = 500;
       }
     }
-  }, [globeReady]);
+  }, [globeReady, isHovering]);
 
   // Handle view preset changes
   useEffect(() => {
@@ -125,7 +126,12 @@ export function MuseumGlobe({ museums, onMuseumClick, onMuseumHover, viewPreset 
   }, [museums, getMarkerSize]);
 
   return (
-    <div ref={containerRef} className="w-full h-full relative">
+    <div 
+      ref={containerRef} 
+      className="w-full h-full relative"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
       <style jsx global>{`
         @keyframes techPulse {
           0%, 100% { 
