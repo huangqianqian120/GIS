@@ -107,23 +107,23 @@ export default function MuseumGlobePage() {
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
-            {/* Language Toggle */}
-            <button
-              onClick={() => setLanguage(language === 'en' ? 'zh' : 'en')}
-              className="px-3 py-1.5 text-sm font-medium border border-[#00FF00] text-[#00FF00] hover:bg-[#00FF00]/10 rounded transition-colors"
-            >
-              {language === 'en' ? '中文' : 'EN'}
-            </button>
-
+          <div className="flex items-center gap-3 w-full md:w-auto">
             {/* Search Bar */}
-            <div className="w-full md:w-auto">
+            <div className="flex-1 md:w-auto">
               <SearchBar 
                 museums={allMuseums}
                 onSelect={handleSearchSelect}
                 placeholder={t.searchPlaceholder}
               />
             </div>
+
+            {/* Language Toggle */}
+            <button
+              onClick={() => setLanguage(language === 'en' ? 'zh' : 'en')}
+              className="px-3 py-2 text-sm font-medium border border-[#00FF00] text-[#00FF00] hover:bg-[#00FF00]/10 rounded transition-colors whitespace-nowrap"
+            >
+              {language === 'en' ? '中文' : 'EN'}
+            </button>
           </div>
         </div>
       </header>
